@@ -1,5 +1,6 @@
 # Klasse Artikel zum Zweck der einfachen Bestandsfuehrung
 
+from socketserver import BaseRequestHandler
 import string
 
 class Artikel:
@@ -81,3 +82,13 @@ class Artikel:
             raise Exception(Artikel.ABGANG_ZU_HOCH)
         self.__bestand -= abgang
     
+    def setProzent(self, prozent):
+        if prozent < Artikel.MIN_PROZENT:
+            raise Exception(Artikel.PROZENT_ZU_NIEDRIG)
+        self.__preis -= self.__preis * (100.0 - prozent) / 100.0
+    
+    def __str__(self):
+        return( "Artikel: " + Artikel.get_artikelNr + 
+                "Bezeichnung: " + Artikel.get_bezeichnung + 
+                "Bestand: " + Artikel.get_bestand +
+                "Preis: " + Artikel.get_bestand)
