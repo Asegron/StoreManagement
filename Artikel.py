@@ -86,6 +86,9 @@ class Artikel:
         if prozent < Artikel.MIN_PROZENT:
             raise Exception(Artikel.PROZENT_ZU_NIEDRIG)
         self.__preis -= self.__preis * (100.0 - prozent) / 100.0
+
+    def __eq__(self, other):
+        return self.__artikelNr == other.__artikelNr 
     
     def __str__(self):
         return( "Artikel: " + Artikel.get_artikelNr + 
