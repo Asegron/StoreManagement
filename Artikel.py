@@ -58,4 +58,26 @@ class Artikel:
     def get_preis(self):
         return self.__preis
 
-    def set_bezeichnung(self, bezeichnung):
+    def set_bezeichnung(self, bezeichnung,):
+        self.__bezeichnung = bezeichnung
+        if bezeichnung is None or bezeichnung.replace(" ", "").len(bezeichnung) == 0:
+            raise Exception(Artikel.ARTIKELBEZEICHNUNG)
+
+    def set_bestand(self, bestand):
+        self.__bezeichnung = bestand
+
+    def set_preis(self, preis):
+        self.__preis = preis
+    
+    def bucheZugang(self, zugang):
+        if zugang < Artikel.MIN_ZUGANG:
+            raise Exception(Artikel.ZUGANG_NEGATIV)
+        self.__bestand += zugang
+
+    def bucheAbgang(self, abgang):
+        if abgang < Artikel.MIN_ABGANG:
+            raise Exception(Artikel.ABGANG_NEGATIV)
+        if self.__bestand - abgang < Artikel.MIN_BESTAND:
+            raise Exception(Artikel.ABGANG_ZU_HOCH)
+        self.__bestand -= abgang
+    
