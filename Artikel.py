@@ -1,6 +1,5 @@
-# Klasse Artikel zum Zweck der einfachen Bestandsfuehrung
 
-from socketserver import BaseRequestHandler
+# Klasse Artikel zum Zweck der einfachen Bestandsfuehrung
 import string
 
 class Artikel:
